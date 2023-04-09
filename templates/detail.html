@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url 'vote' question.pk %}" method="post">
+        {% csrf_token %}
+    <div id="app" class="container">
+        <div class="row">
+            <h1>{{question.question_text}}</h1><br>
+            <input type="text" value="{{question.pk}}"><br>
+            <input type="radio" name="choice" id="yes" value="{{question.pk}}">yes<br>
+            <input type="radio" name="choice" id="definitely" value="{{question.pk}}">definitely<br>
+            <input type="radio" name="choice" id="no" value="{{question.pk}}">no<br>
+            <input type="submit" value="VOTE">
+        </div>
+    </div>
+</form>
+</body>
+</html>
