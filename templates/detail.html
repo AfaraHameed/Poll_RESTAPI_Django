@@ -13,9 +13,11 @@
         <div class="row">
             <h1>{{question.question_text}}</h1><br>
             <input type="text" value="{{question.pk}}"><br>
-            <input type="radio" name="choice" id="yes" value="{{question.pk}}">yes<br>
-            <input type="radio" name="choice" id="definitely" value="{{question.pk}}">definitely<br>
-            <input type="radio" name="choice" id="no" value="{{question.pk}}">no<br>
+
+            <h3>{{question.question_text}}</h1><br>
+                {% for i in question.choice_set.all %}
+                <input type="radio" name="choice"  value="{{i.pk}}">{{i.choice_text}}<br>
+                {% endfor %}
             <input type="submit" value="VOTE">
         </div>
     </div>

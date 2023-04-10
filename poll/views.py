@@ -55,11 +55,8 @@ class VoteView(generic.View):
         try:
             queryset = self.get_queryset(choice_id)
         except(KeyError,Choice.DoesNotExist):
-            print(choice_id)
-            print('error')
             return redirect('detail',pk=question_id)
         else:
-            print('success')
             queryset.votes+=1
             queryset.save()
             return redirect('results',pk=question_id)
@@ -73,5 +70,7 @@ class ResultsView(TemplateResponseMixin,generic.View):
     
     def get(self,request,pk):
         queryset = self.get_quesryset(pk)
+        question =  Questions.objects.get(pk=pk)
         context={'question':queryset}
+        # print(question.choice_set.all())
         return self.render_to_response(context)

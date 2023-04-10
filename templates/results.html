@@ -8,6 +8,10 @@
 </head>
 <body>
     <h3>{{question.question_text}}</h1><br>
-    
+       {% for i in question.choice_set.all %}
+       <div>{{i.choice_text}}--{{i.votes}}</div>
+       {% endfor %}
+
+       <a href="{% url 'detail' pk=question.pk %}">vote again???</a>
 </body>
 </html>
