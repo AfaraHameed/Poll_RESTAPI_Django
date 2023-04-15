@@ -4,6 +4,7 @@ from .models import Questions,Choice
 from .mixins import RequireLoginMixin
 from django.views.generic.base import TemplateResponseMixin
 from django.contrib.auth.views import LoginView
+
 # Create your views here.
 
 """
@@ -74,3 +75,5 @@ class ResultsView(TemplateResponseMixin,generic.View):
         context={'question':queryset}
         # print(question.choice_set.all())
         return self.render_to_response(context)
+
+
